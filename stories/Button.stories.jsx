@@ -32,6 +32,10 @@ export default {
     timeout: {
       description: "Время до скрытия подсказки",
     },
+    size: {
+      description: "Размер иконки и/или индикатора загрузки",
+    },
+
     onClick: {
       table: {
         disable: true,
@@ -58,4 +62,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   ...Component.defaultProps,
+  caption: "Button",
 };

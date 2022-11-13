@@ -34,7 +34,13 @@ const Default = (props) => {
   const component = (
     <Button
       {...other}
-      sx={{ padding: 1, ...sx }}
+      sx={{
+        padding: 1,
+        "& div": {
+          display: textIcon ? "flex" : null,
+        },
+        ...sx,
+      }}
       disabled={loading}
       onClick={navigation ? handleOnNavigation : onClick}
     >
@@ -93,7 +99,7 @@ Default.propTypes = {
 };
 
 Default.defaultProps = {
-  caption: "Button",
+  caption: undefined,
   variant: "contained",
   color: "primary",
   textIcon: undefined,

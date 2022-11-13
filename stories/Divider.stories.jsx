@@ -58,6 +58,7 @@ Button.args = {
   ...Component.defaultProps,
   ...other,
   variantButton: variant,
+  caption: "Пример строки",
 };
 
 Button.argTypes = {

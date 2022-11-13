@@ -5,10 +5,29 @@ export default {
   component: Component,
   parameters: { controls: { sort: "requiredFirst" } },
   argTypes: {
-    color: { control: "color" },
+    color: { control: "color", description: "Цвет заливки иконки" },
     textIcon: {
       options: iconItems.map((item) => item.caption),
       control: { type: "select" },
+      description: "Иконка",
+    },
+    className: {
+      description: "Тип отображение для компонента",
+    },
+    help: {
+      description: "Подсказка при наведении",
+    },
+    enterDelay: {
+      description: "Задержка появления подсказки",
+    },
+    timeout: {
+      description: "Время до скрытия подсказки",
+    },
+    size: {
+      description: "Размер иконки и/или индикатора загрузки",
+    },
+    withOutAnimate: {
+      description: "Без анимации при показе",
     },
   },
 };
