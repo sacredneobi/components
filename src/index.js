@@ -6,5 +6,6 @@ import Tooltip from "./tooltip";
 import Skeleton from "./skeleton";
 import Loading from "./loading";
 import Divider from "./divider";
+import Main from "./main";
 
-export { Button, Box, Text, Icon, Tooltip, Skeleton, Loading, Divider };
+export { Button, Box, Text, Icon, Tooltip, Skeleton, Loading, Divider, Main };
