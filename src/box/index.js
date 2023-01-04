@@ -30,6 +30,7 @@ const Default = (props) => {
     pB,
     pL,
     pR,
+    loading,
     ...other
   } = props;
 
@@ -94,7 +95,8 @@ const Default = (props) => {
     (sx ? sx : sxFlex).display = "flex";
   }
   if (column) {
-    (sx ? sx : sxFlex).flexDirection = "column";
+    (sx ? sx : sxFlex).flexDirection =
+      typeof column === "boolean" ? "column" : column;
   }
   if (row) {
     (sx ? sx : sxFlex).flexDirection = "row";
@@ -124,15 +126,19 @@ const Default = (props) => {
 Default.propTypes = {
   defFlex: PropTypes.bool,
   flex: PropTypes.bool,
-  column: PropTypes.bool,
+  column: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   row: PropTypes.bool,
-  grow: PropTypes.number,
+  grow: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   nowrap: PropTypes.bool,
   alignItems: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   name: PropTypes.string,
   center: PropTypes.bool,
   overflow: PropTypes.bool,
-  gap: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  gap: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   heightFull: PropTypes.bool,
   heightVH: PropTypes.bool,
   widthFull: PropTypes.bool,

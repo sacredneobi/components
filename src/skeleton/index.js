@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { Skeleton } from "@mui/material";
 
 const Default = (props) => {
-  const { width, widthFull, ...other } = props;
+  const { width, widthFull, loading, ...other } = props;
   return <Skeleton width={widthFull ? "100%" : width} {...other} />;
 };
 
 Default.propTypes = {
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.number,
   widthFull: PropTypes.bool,
   loading: PropTypes.bool,

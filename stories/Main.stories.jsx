@@ -11,8 +11,8 @@ export default {
     caption: {
       description: "Заголовок отображаемый внутри",
     },
-    error: {
-      description: "Тип сообщения ошибка",
+    variant: {
+      description: "Тип отображения компонента",
     },
     onClick: {
       table: {

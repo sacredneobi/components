@@ -3,6 +3,17 @@ import PropTypes from "prop-types";
 import { Icon, CircularProgress, Fade } from "@mui/material";
 import Tooltip from "../tooltip";
 
+const defColor = [
+  "action",
+  "disabled",
+  "primary",
+  "secondary",
+  "error",
+  "info",
+  "success",
+  "warning",
+];
+
 const Default = (props) => {
   const {
     textIcon,
@@ -24,8 +35,9 @@ const Default = (props) => {
   const icon = (
     <Icon
       {...other}
+      color={defColor.includes(color) ? color : undefined}
       sx={{
-        color,
+        color: !defColor.includes(color) ? color : undefined,
         fontSize: `${size}px !important`,
         minWidth: size,
         minHeight: size,
@@ -47,8 +59,8 @@ const Default = (props) => {
   }
 
   return (
-    <Fade in={true} timeout={{ enter: timeout }}>
-      <div>{component}</div>
+    <Fade in={true} timeout={{ enter: timeout }} sx={{ ...sx }}>
+      <div style={{ display: "flex", alignItems: "center" }}>{component}</div>
     </Fade>
   );
 };

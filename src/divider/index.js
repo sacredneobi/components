@@ -4,7 +4,7 @@ import { Divider } from "@mui/material";
 import Box from "../box";
 
 const Default = (props) => {
-  const { sxBox, fix, ...other } = props;
+  const { sxBox, fix, loading, ...other } = props;
 
   if (fix) {
     return (

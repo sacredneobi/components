@@ -20,7 +20,8 @@ const myKeyframe = keyframes`
 `;
 
 const Styled = styled("div", {
-  shouldForwardProp: (prop) => prop !== "width" && prop !== "height",
+  shouldForwardProp: (prop) =>
+    prop !== "width" && prop !== "height" && prop !== "sx",
 })(({ theme, width, height }) => ({
   fill: theme.palette.text.disabled,
   display: "flex",
@@ -29,6 +30,7 @@ const Styled = styled("div", {
   width: width,
   alignItems: "center",
   justifyContent: "center",
+  overflow: "hidden",
   "& svg": {
     height: `Calc(${
       typeof height === "string" ? `${200}px` : `${height}px`
@@ -44,10 +46,11 @@ const Styled = styled("div", {
 }));
 
 const Default = (props) => {
-  const { animation, width, height, timeout, enterDelay } = props;
+  const { animation, width, height, timeout, enterDelay, loading, ...other } =
+    props;
 
   const icon = (
-    <Styled width={width} height={height}>
+    <Styled width={width} height={height} {...other}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         id="Layer_1"

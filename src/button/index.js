@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import Icon from "../icon";
 import Text from "../text";
+import Box from "../box";
 import Tooltip from "../tooltip";
 
 const Default = (props) => {
@@ -21,6 +22,9 @@ const Default = (props) => {
     loading,
     size,
     help,
+    iconPos,
+    classNameIcon,
+    sizeButton,
     ...other
   } = props;
 
@@ -31,17 +35,40 @@ const Default = (props) => {
     event.stopPropagation();
   };
 
+  const icon = textIcon ? (
+    <Icon
+      textIcon={textIcon}
+      size={size}
+      sx={{
+        mr: caption && caption !== "" && iconPos === "left" && 1,
+        ml: caption && caption !== "" && iconPos === "right" && 1,
+        mt: caption && caption !== "" && iconPos === "bottom" && 1,
+        mb: caption && caption !== "" && iconPos === "top" && 1,
+        ...sxIcon,
+      }}
+      className={classNameIcon}
+    />
+  ) : (
+    children
+  );
+
+  const text = caption ? (
+    <Text caption={caption} sx={{ fontSize: "0.8rem", ...sxText }} />
+  ) : null;
+
   const component = (
     <Button
+      size={sizeButton}
+      disabled={loading}
       {...other}
       sx={{
         padding: 1,
+        ...(sizeButton === "small" && { py: 0.5, "& p": { fontSize: 13 } }),
         "& div": {
           display: textIcon ? "flex" : null,
         },
         ...sx,
       }}
-      disabled={loading}
       onClick={navigation ? handleOnNavigation : onClick}
     >
       {loading && (
@@ -54,18 +81,20 @@ const Default = (props) => {
           }}
         />
       )}
-      {textIcon && !loading && (
-        <Icon
-          textIcon={textIcon}
-          size={size}
-          sx={{
-            mr: caption && caption !== "" && 1,
-            ...sxIcon,
-          }}
-        />
+      {!loading && iconPos === "left" && icon}
+      {["bottom", "top"].includes(iconPos) ? (
+        <Box
+          defFlex
+          alignItems
+          column={iconPos === "top" ? "column" : "column-reverse"}
+        >
+          {icon}
+          {text}
+        </Box>
+      ) : (
+        text
       )}
-      <Text caption={caption} sx={{ fontSize: "0.8rem", ...sxText }} />
-      {children}
+      {!loading && iconPos === "right" && icon}
     </Button>
   );
 
@@ -77,7 +106,7 @@ const Default = (props) => {
 };
 
 Default.propTypes = {
-  caption: PropTypes.string.isRequired,
+  caption: PropTypes.string,
   variant: PropTypes.oneOf(["contained", "outlined", "text"]),
   color: PropTypes.oneOf([
     "inherit",
@@ -88,6 +117,7 @@ Default.propTypes = {
     "info",
     "warning",
   ]),
+  iconPos: PropTypes.oneOf(["left", "top", "bottom", "right"]),
   onClick: PropTypes.func,
   textIcon: PropTypes.string,
   loading: PropTypes.bool,
@@ -102,6 +132,7 @@ Default.defaultProps = {
   caption: undefined,
   variant: "contained",
   color: "primary",
+  iconPos: "left",
   textIcon: undefined,
   loading: false,
   navigation: undefined,
