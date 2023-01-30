@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Typography, Skeleton } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Box from "../box";
 import Tooltip from "../tooltip";
 import { alpha } from "@mui/material/styles";
@@ -32,10 +32,10 @@ const Default = (props) => {
     ...other
   } = props;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleOnNavigation = (event) => {
-    navigate(navigation);
+    // navigate(navigation);
     event.stopPropagation();
   };
 
@@ -48,6 +48,7 @@ const Default = (props) => {
           fontSize: fs ? fs : fontSize,
           lineHeight: lh ? `${lh}px` : null,
           width: "100%",
+          transform: "unset",
           ...sx,
         }}
       />

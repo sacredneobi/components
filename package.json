@@ -1,6 +1,6 @@
 {
   "name": "@sacred/mui5",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Набор компонентов для проектов, MUI v5.10.8 react 18.2.0",
   "main": "dist/index.js",
   "scripts": {

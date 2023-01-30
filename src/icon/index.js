@@ -59,7 +59,7 @@ const Default = (props) => {
   }
 
   return (
-    <Fade in={true} timeout={{ enter: timeout }} sx={{ ...sx }}>
+    <Fade in={true} timeout={{ enter: timeout }}>
       <div style={{ display: "flex", alignItems: "center" }}>{component}</div>
     </Fade>
   );

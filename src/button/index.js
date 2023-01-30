@@ -63,6 +63,7 @@ const Default = (props) => {
       {...other}
       sx={{
         padding: 1,
+        verticalAlign: "unset",
         ...(sizeButton === "small" && { py: 0.5, "& p": { fontSize: 13 } }),
         "& div": {
           display: textIcon ? "flex" : null,
