@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
-var _excluded = ["defFlex", "flex", "column", "row", "grow", "sx", "nowrap", "alignItems", "name", "center", "overflow", "gap", "heightFull", "heightVH", "widthFull", "justifyContent", "mT", "mB", "mL", "mR", "m", "p", "pT", "pB", "pL", "pR"];
+var _excluded = ["defFlex", "flex", "column", "row", "grow", "sx", "nowrap", "alignItems", "name", "center", "overflow", "gap", "heightFull", "heightVH", "widthFull", "justifyContent", "mT", "mB", "mL", "mR", "m", "p", "pT", "pB", "pL", "pR", "loading"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -42,6 +42,7 @@ var Default = function Default(props) {
     pB = props.pB,
     pL = props.pL,
     pR = props.pR,
+    loading = props.loading,
     other = _objectWithoutProperties(props, _excluded);
   var sxFlex = {};
   if (defFlex) {
@@ -99,7 +100,7 @@ var Default = function Default(props) {
     (sx ? sx : sxFlex).display = "flex";
   }
   if (column) {
-    (sx ? sx : sxFlex).flexDirection = "column";
+    (sx ? sx : sxFlex).flexDirection = typeof column === "boolean" ? "column" : column;
   }
   if (row) {
     (sx ? sx : sxFlex).flexDirection = "row";
@@ -127,15 +128,15 @@ var Default = function Default(props) {
 Default.propTypes = {
   defFlex: _propTypes["default"].bool,
   flex: _propTypes["default"].bool,
-  column: _propTypes["default"].bool,
+  column: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].string]),
   row: _propTypes["default"].bool,
-  grow: _propTypes["default"].number,
+  grow: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].number]),
   nowrap: _propTypes["default"].bool,
   alignItems: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].string]),
   name: _propTypes["default"].string,
   center: _propTypes["default"].bool,
   overflow: _propTypes["default"].bool,
-  gap: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].string]),
+  gap: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].string, _propTypes["default"].number]),
   heightFull: _propTypes["default"].bool,
   heightVH: _propTypes["default"].bool,
   widthFull: _propTypes["default"].bool,

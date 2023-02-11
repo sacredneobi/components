@@ -7,10 +7,10 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
-var _reactRouterDom = require("react-router-dom");
 var _box = _interopRequireDefault(require("../box"));
 var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _excluded = ["caption", "checkRender", "loading", "sx", "children", "color", "help", "navigation", "allowSelect", "noWrap", "onClick", "bold", "timeout", "enterDelay", "fontSize"];
+var _styles = require("@mui/material/styles");
+var _excluded = ["caption", "checkRender", "loading", "sx", "children", "color", "help", "navigation", "allowSelect", "noWrap", "onClick", "bold", "timeout", "enterDelay", "fontSize", "fw", "fs", "lh", "center", "cross", "crossColor"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -34,10 +34,18 @@ var Default = function Default(props) {
     timeout = props.timeout,
     enterDelay = props.enterDelay,
     fontSize = props.fontSize,
+    fw = props.fw,
+    fs = props.fs,
+    lh = props.lh,
+    center = props.center,
+    cross = props.cross,
+    crossColor = props.crossColor,
     other = _objectWithoutProperties(props, _excluded);
-  var navigate = (0, _reactRouterDom.useNavigate)();
+
+  // const navigate = useNavigate();
+
   var handleOnNavigation = function handleOnNavigation(event) {
-    navigate(navigation);
+    // navigate(navigation);
     event.stopPropagation();
   };
   if (loading) {
@@ -45,22 +53,40 @@ var Default = function Default(props) {
       variant: "text"
     }, other, {
       sx: _objectSpread({
-        fontSize: fontSize,
-        width: "100%"
+        fontSize: fs ? fs : fontSize,
+        lineHeight: lh ? "".concat(lh, "px") : null,
+        width: "100%",
+        transform: "unset"
       }, sx)
     }));
   }
   var item = /*#__PURE__*/_react["default"].createElement(_material.Typography, _extends({
     noWrap: noWrap,
-    sx: _objectSpread({
+    sx: _objectSpread(_objectSpread({
       userSelect: allowSelect ? "unset" : "none",
       color: function color(theme) {
         return theme.palette.text[_color];
       },
       whiteSpace: noWrap ? null : "pre-line",
-      fontWeight: bold && "bold",
-      fontSize: fontSize
-    }, sx),
+      fontWeight: bold ? "bold" : fw ? fw : null,
+      fontSize: fs ? fs : fontSize,
+      textAlign: center ? "center" : null,
+      lineHeight: lh ? "".concat(lh, "px") : null
+    }, cross && {
+      position: "relative",
+      "&::before": {
+        content: '""',
+        borderBottom: function borderBottom(theme) {
+          return "2px solid ".concat((0, _styles.alpha)(crossColor ? crossColor : theme.palette.primary.main, 0.4));
+        },
+        position: "absolute",
+        right: -1,
+        height: 2,
+        top: "calc(50% - 2px)",
+        left: -1,
+        transform: "rotate(-12deg)"
+      }
+    }), sx),
     onClick: navigation ? handleOnNavigation : onClick
   }, other), caption, children);
   if (typeof checkRender === "function") {
@@ -73,17 +99,23 @@ var Default = function Default(props) {
   }, item);
 };
 Default.propTypes = {
-  caption: _propTypes["default"].string.isRequired,
+  caption: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]).isRequired,
   help: _propTypes["default"].string,
   timeout: _propTypes["default"].number,
   enterDelay: _propTypes["default"].number,
   color: _propTypes["default"].oneOf(["inherit", "primary", "secondary", "success", "error", "info", "warning"]),
+  cross: _propTypes["default"].bool,
   navigation: _propTypes["default"].string,
+  crossColor: _propTypes["default"].string,
   loading: _propTypes["default"].bool,
   bold: _propTypes["default"].bool,
   noWrap: _propTypes["default"].bool,
   allowSelect: _propTypes["default"].bool,
-  fontSize: _propTypes["default"].number
+  fontSize: _propTypes["default"].number,
+  lh: _propTypes["default"].number,
+  fs: _propTypes["default"].number,
+  fw: _propTypes["default"].number,
+  center: _propTypes["default"].bool
 };
 Default.defaultProps = {
   timeout: 600,
@@ -93,7 +125,9 @@ Default.defaultProps = {
   noWrap: false,
   allowSelect: false,
   navigation: undefined,
-  fontSize: 16
+  fontSize: 16,
+  cross: false,
+  crossColor: undefined
 };
 var _default = Default;
 exports["default"] = _default;

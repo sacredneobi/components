@@ -32,8 +32,7 @@ var Default = function Default(props) {
 };
 Default.propTypes = {
   timeout: _propTypes["default"].number,
-  enterDelay: _propTypes["default"].number,
-  help: _propTypes["default"].string
+  enterDelay: _propTypes["default"].number
 };
 Default.defaultProps = {
   timeout: 600,

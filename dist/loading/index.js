@@ -9,13 +9,17 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _react2 = require("@emotion/react");
 var _styles = require("@mui/material/styles");
 var _material = require("@mui/material");
+var _excluded = ["animation", "width", "height", "timeout", "enterDelay", "loading"];
 var _templateObject;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 var myKeyframe = (0, _react2.keyframes)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n0% {\n  transform: rotate(-45deg);\n}\n25% {\n  transform: rotate(-20deg);\n}\n75% {\n  transform: rotate(-65deg);\n}\n100% {\n  transform: rotate(-45deg);\n}\n"])));
 var Styled = (0, _styles.styled)("div", {
   shouldForwardProp: function shouldForwardProp(prop) {
-    return prop !== "width" && prop !== "height";
+    return prop !== "width" && prop !== "height" && prop !== "sx";
   }
 })(function (_ref) {
   var theme = _ref.theme,
@@ -29,6 +33,7 @@ var Styled = (0, _styles.styled)("div", {
     width: width,
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden",
     "& svg": {
       height: "Calc(".concat(typeof height === "string" ? "".concat(200, "px") : "".concat(height, "px"), " - 60px)"),
       width: "Calc(".concat(typeof width === "string" ? width : "".concat(width, "px"), " - 60px)"),
@@ -46,11 +51,13 @@ var Default = function Default(props) {
     width = props.width,
     height = props.height,
     timeout = props.timeout,
-    enterDelay = props.enterDelay;
-  var icon = /*#__PURE__*/_react["default"].createElement(Styled, {
+    enterDelay = props.enterDelay,
+    loading = props.loading,
+    other = _objectWithoutProperties(props, _excluded);
+  var icon = /*#__PURE__*/_react["default"].createElement(Styled, _extends({
     width: width,
     height: height
-  }, /*#__PURE__*/_react["default"].createElement("svg", {
+  }, other), /*#__PURE__*/_react["default"].createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     id: "Layer_1",
     "data-name": "Layer 1",
