@@ -24,7 +24,6 @@ const Default = (props) => {
 Default.propTypes = {
   timeout: PropTypes.number,
   enterDelay: PropTypes.number,
-  help: PropTypes.string,
 };
 
 Default.defaultProps = {
