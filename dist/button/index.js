@@ -58,7 +58,7 @@ var Default = function Default(props) {
     }, sxIcon),
     className: classNameIcon
   }) : children;
-  var text = caption ? /*#__PURE__*/_react["default"].createElement(_text["default"], {
+  var text = caption ? typeof caption === "function" ? caption : /*#__PURE__*/_react["default"].createElement(_text["default"], {
     caption: caption,
     sx: _objectSpread({
       fontSize: "0.8rem"
@@ -107,7 +107,7 @@ var Default = function Default(props) {
   }, component);
 };
 Default.propTypes = {
-  caption: _propTypes["default"].string,
+  caption: _propTypes["default"].oneOf([_propTypes["default"].string, _propTypes["default"].func]),
   variant: _propTypes["default"].oneOf(["contained", "outlined", "text"]),
   color: _propTypes["default"].oneOf(["inherit", "primary", "secondary", "success", "error", "info", "warning"]),
   placement: _propTypes["default"].oneOf(["bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", undefined]),
