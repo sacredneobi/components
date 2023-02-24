@@ -58,7 +58,7 @@ const Default = (props) => {
 
   const text = caption ? (
     typeof caption === "function" ? (
-      caption
+      caption()
     ) : (
       <Text caption={caption} sx={{ fontSize: "0.8rem", ...sxText }} />
     )
@@ -127,7 +127,7 @@ const Default = (props) => {
 };
 
 Default.propTypes = {
-  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  // caption: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   variant: PropTypes.oneOf(["contained", "outlined", "text"]),
   color: PropTypes.oneOf([
     "inherit",
