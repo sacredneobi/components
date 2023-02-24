@@ -107,7 +107,7 @@ var Default = function Default(props) {
   }, component);
 };
 Default.propTypes = {
-  // caption: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  caption: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].func]),
   variant: _propTypes["default"].oneOf(["contained", "outlined", "text"]),
   color: _propTypes["default"].oneOf(["inherit", "primary", "secondary", "success", "error", "info", "warning"]),
   placement: _propTypes["default"].oneOf(["bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", undefined]),
