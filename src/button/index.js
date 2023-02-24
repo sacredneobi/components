@@ -127,7 +127,7 @@ const Default = (props) => {
 };
 
 Default.propTypes = {
-  caption: PropTypes.oneOf([PropTypes.string, PropTypes.func]),
+  caption: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   variant: PropTypes.oneOf(["contained", "outlined", "text"]),
   color: PropTypes.oneOf([
     "inherit",
