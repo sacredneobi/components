@@ -7,7 +7,7 @@ import Text from "../text";
 import Box from "../box";
 import Tooltip from "../tooltip";
 
-const Default = (props) => {
+const MyButton = (props) => {
   const {
     textIcon,
     caption,
@@ -28,15 +28,9 @@ const Default = (props) => {
     withOutAnimate,
     placement,
     leaveDelay,
+    onNavigate,
     ...other
   } = props;
-
-  const navigate = useNavigate();
-
-  const handleOnNavigation = (event) => {
-    navigate(navigation);
-    event.stopPropagation();
-  };
 
   const icon = textIcon ? (
     <Icon
@@ -78,7 +72,7 @@ const Default = (props) => {
         },
         ...sx,
       }}
-      onClick={navigation ? handleOnNavigation : onClick}
+      onClick={navigation ? onNavigate : onClick}
     >
       {loading && (
         <Icon
@@ -124,6 +118,23 @@ const Default = (props) => {
       {component}
     </Tooltip>
   );
+};
+
+const MyButtonNavigate = (props) => {
+  const navigate = useNavigate();
+
+  const handleOnNavigation = (event) => {
+    navigate(props.navigation);
+    event.stopPropagation();
+  };
+  return <MyButton {...props} onNavigate={handleOnNavigation} />;
+};
+
+const Default = (props) => {
+  if (props.navigation) {
+    return <MyButtonNavigate {...props} />;
+  }
+  return <MyButton {...props} />;
 };
 
 Default.propTypes = {

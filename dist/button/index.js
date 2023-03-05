@@ -12,7 +12,7 @@ var _icon = _interopRequireDefault(require("../icon"));
 var _text = _interopRequireDefault(require("../text"));
 var _box = _interopRequireDefault(require("../box"));
 var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _excluded = ["textIcon", "caption", "children", "sxIcon", "sxText", "navigation", "onClick", "timeout", "enterDelay", "sx", "loading", "size", "help", "iconPos", "classNameIcon", "sizeButton", "withOutAnimate", "placement", "leaveDelay"];
+var _excluded = ["textIcon", "caption", "children", "sxIcon", "sxText", "navigation", "onClick", "timeout", "enterDelay", "sx", "loading", "size", "help", "iconPos", "classNameIcon", "sizeButton", "withOutAnimate", "placement", "leaveDelay", "onNavigate"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -20,7 +20,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-var Default = function Default(props) {
+var MyButton = function MyButton(props) {
   var textIcon = props.textIcon,
     caption = props.caption,
     children = props.children,
@@ -40,12 +40,8 @@ var Default = function Default(props) {
     withOutAnimate = props.withOutAnimate,
     placement = props.placement,
     leaveDelay = props.leaveDelay,
+    onNavigate = props.onNavigate,
     other = _objectWithoutProperties(props, _excluded);
-  var navigate = (0, _reactRouterDom.useNavigate)();
-  var handleOnNavigation = function handleOnNavigation(event) {
-    navigate(navigation);
-    event.stopPropagation();
-  };
   var icon = textIcon ? /*#__PURE__*/_react["default"].createElement(_icon["default"], {
     textIcon: textIcon,
     size: size,
@@ -81,7 +77,7 @@ var Default = function Default(props) {
         display: textIcon ? "flex" : null
       }
     }, sx),
-    onClick: navigation ? handleOnNavigation : onClick
+    onClick: navigation ? onNavigate : onClick
   }), loading && /*#__PURE__*/_react["default"].createElement(_icon["default"], {
     loading: loading,
     textIcon: "",
@@ -105,6 +101,22 @@ var Default = function Default(props) {
     placement: placement,
     leaveDelay: leaveDelay
   }, component);
+};
+var MyButtonNavigate = function MyButtonNavigate(props) {
+  var navigate = (0, _reactRouterDom.useNavigate)();
+  var handleOnNavigation = function handleOnNavigation(event) {
+    navigate(props.navigation);
+    event.stopPropagation();
+  };
+  return /*#__PURE__*/_react["default"].createElement(MyButton, _extends({}, props, {
+    onNavigate: handleOnNavigation
+  }));
+};
+var Default = function Default(props) {
+  if (props.navigation) {
+    return /*#__PURE__*/_react["default"].createElement(MyButtonNavigate, props);
+  }
+  return /*#__PURE__*/_react["default"].createElement(MyButton, props);
 };
 Default.propTypes = {
   caption: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].func]),
