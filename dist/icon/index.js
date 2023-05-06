@@ -67,7 +67,6 @@ Default.propTypes = {
   textIcon: _propTypes["default"].string.isRequired,
   className: _propTypes["default"].string,
   withOutAnimate: _propTypes["default"].bool,
-  help: _propTypes["default"].string,
   timeout: _propTypes["default"].number,
   enterDelay: _propTypes["default"].number,
   color: _propTypes["default"].string,

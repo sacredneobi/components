@@ -69,7 +69,6 @@ Default.propTypes = {
   textIcon: PropTypes.string.isRequired,
   className: PropTypes.string,
   withOutAnimate: PropTypes.bool,
-  help: PropTypes.string,
   timeout: PropTypes.number,
   enterDelay: PropTypes.number,
   color: PropTypes.string,
