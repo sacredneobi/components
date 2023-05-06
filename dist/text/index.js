@@ -100,7 +100,6 @@ var Default = function Default(props) {
 };
 Default.propTypes = {
   caption: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]).isRequired,
-  help: _propTypes["default"].string,
   timeout: _propTypes["default"].number,
   enterDelay: _propTypes["default"].number,
   color: _propTypes["default"].oneOf(["inherit", "primary", "secondary", "success", "error", "info", "warning"]),

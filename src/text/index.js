@@ -106,7 +106,6 @@ const Default = (props) => {
 
 Default.propTypes = {
   caption: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-  help: PropTypes.string,
   timeout: PropTypes.number,
   enterDelay: PropTypes.number,
   color: PropTypes.oneOf([
