@@ -43,11 +43,11 @@ var Default = function Default(props) {
       minHeight: size
     }, sx)
   }), textIcon);
-  var component = /*#__PURE__*/_react["default"].createElement(_tooltip["default"], {
+  var component = help ? /*#__PURE__*/_react["default"].createElement(_tooltip["default"], {
     help: help,
     timeout: timeout,
     enterDelay: enterDelay
-  }, icon);
+  }, icon) : icon;
   if (withOutAnimate) {
     return component;
   }

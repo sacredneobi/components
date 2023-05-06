@@ -48,10 +48,12 @@ const Default = (props) => {
     </Icon>
   );
 
-  const component = (
+  const component = help ? (
     <Tooltip help={help} timeout={timeout} enterDelay={enterDelay}>
       {icon}
     </Tooltip>
+  ) : (
+    icon
   );
 
   if (withOutAnimate) {
