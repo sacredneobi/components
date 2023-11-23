@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Typography, Skeleton } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
+
+import Skeleton from "@mui/material/Skeleton";
+import Typography from "@mui/material/Typography";
+
 import Box from "../box";
 import Tooltip from "../tooltip";
 import { alpha } from "@mui/material/styles";

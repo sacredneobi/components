@@ -4,20 +4,7 @@ import Text from "./text";
 import Icon from "./icon";
 import Tooltip from "./tooltip";
 import Skeleton from "./skeleton";
-import Loading from "./loading";
 import Divider from "./divider";
-import Main from "./main";
 import CssBaseLine from "./cssBaseLine";
 
-export {
-  Button,
-  Box,
-  Text,
-  Icon,
-  Tooltip,
-  Skeleton,
-  Loading,
-  Divider,
-  Main,
-  CssBaseLine,
-};
+export { Button, Box, Text, Icon, Tooltip, Skeleton, Divider, CssBaseLine };

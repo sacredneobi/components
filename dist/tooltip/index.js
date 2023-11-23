@@ -5,7 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _material = require("@mui/material");
+var _Tooltip = _interopRequireDefault(require("@mui/material/Tooltip"));
+var _Fade = _interopRequireDefault(require("@mui/material/Fade"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _excluded = ["timeout", "enterDelay", "help"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -20,10 +21,10 @@ var Default = function Default(props) {
   if (!help) {
     return other.children;
   }
-  return /*#__PURE__*/_react["default"].createElement(_material.Tooltip, _extends({
+  return /*#__PURE__*/_react["default"].createElement(_Tooltip["default"], _extends({
     title: help,
     disableInteractive: true,
-    TransitionComponent: _material.Fade,
+    TransitionComponent: _Fade["default"],
     TransitionProps: {
       timeout: timeout
     },

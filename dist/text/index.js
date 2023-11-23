@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _material = require("@mui/material");
+var _Skeleton = _interopRequireDefault(require("@mui/material/Skeleton"));
+var _Typography = _interopRequireDefault(require("@mui/material/Typography"));
 var _box = _interopRequireDefault(require("../box"));
 var _tooltip = _interopRequireDefault(require("../tooltip"));
 var _styles = require("@mui/material/styles");
@@ -49,7 +50,7 @@ var Default = function Default(props) {
     event.stopPropagation();
   };
   if (loading) {
-    return /*#__PURE__*/_react["default"].createElement(_material.Skeleton, _extends({
+    return /*#__PURE__*/_react["default"].createElement(_Skeleton["default"], _extends({
       variant: "text"
     }, other, {
       sx: _objectSpread({
@@ -60,7 +61,7 @@ var Default = function Default(props) {
       }, sx)
     }));
   }
-  var item = /*#__PURE__*/_react["default"].createElement(_material.Typography, _extends({
+  var item = /*#__PURE__*/_react["default"].createElement(_Typography["default"], _extends({
     noWrap: noWrap,
     sx: _objectSpread(_objectSpread({
       userSelect: allowSelect ? "unset" : "none",

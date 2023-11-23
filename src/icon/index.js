@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Icon, CircularProgress, Fade } from "@mui/material";
+import Icon from "@mui/material/Icon";
+import CircularProgress from "@mui/material/CircularProgress";
 import Tooltip from "../tooltip";
 
 const defColor = [
@@ -18,7 +19,6 @@ const Default = (props) => {
   const {
     textIcon,
     help,
-    withOutAnimate,
     timeout,
     enterDelay,
     color,
@@ -56,21 +56,12 @@ const Default = (props) => {
     icon
   );
 
-  if (withOutAnimate) {
-    return component;
-  }
-
-  return (
-    <Fade in={true} timeout={{ enter: timeout }}>
-      <div style={{ display: "flex", alignItems: "center" }}>{component}</div>
-    </Fade>
-  );
+  return component;
 };
 
 Default.propTypes = {
   textIcon: PropTypes.string.isRequired,
   className: PropTypes.string,
-  withOutAnimate: PropTypes.bool,
   timeout: PropTypes.number,
   enterDelay: PropTypes.number,
   color: PropTypes.string,

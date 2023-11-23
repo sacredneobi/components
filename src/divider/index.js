@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Divider } from "@mui/material";
+import Divider from "@mui/material/Divider";
 import Box from "../box";
 
 const Default = (props) => {

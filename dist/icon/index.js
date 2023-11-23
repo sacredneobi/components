@@ -6,9 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _material = require("@mui/material");
+var _Icon = _interopRequireDefault(require("@mui/material/Icon"));
+var _CircularProgress = _interopRequireDefault(require("@mui/material/CircularProgress"));
 var _tooltip = _interopRequireDefault(require("../tooltip"));
-var _excluded = ["textIcon", "help", "withOutAnimate", "timeout", "enterDelay", "color", "loading", "size", "sx"];
+var _excluded = ["textIcon", "help", "timeout", "enterDelay", "color", "loading", "size", "sx"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -20,7 +21,6 @@ var defColor = ["action", "disabled", "primary", "secondary", "error", "info", "
 var Default = function Default(props) {
   var textIcon = props.textIcon,
     help = props.help,
-    withOutAnimate = props.withOutAnimate,
     timeout = props.timeout,
     enterDelay = props.enterDelay,
     color = props.color,
@@ -29,12 +29,12 @@ var Default = function Default(props) {
     sx = props.sx,
     other = _objectWithoutProperties(props, _excluded);
   if (loading) {
-    return /*#__PURE__*/_react["default"].createElement(_material.CircularProgress, {
+    return /*#__PURE__*/_react["default"].createElement(_CircularProgress["default"], {
       size: size,
       sx: sx
     });
   }
-  var icon = /*#__PURE__*/_react["default"].createElement(_material.Icon, _extends({}, other, {
+  var icon = /*#__PURE__*/_react["default"].createElement(_Icon["default"], _extends({}, other, {
     color: defColor.includes(color) ? color : undefined,
     sx: _objectSpread({
       color: !defColor.includes(color) ? color : undefined,
@@ -48,25 +48,11 @@ var Default = function Default(props) {
     timeout: timeout,
     enterDelay: enterDelay
   }, icon) : icon;
-  if (withOutAnimate) {
-    return component;
-  }
-  return /*#__PURE__*/_react["default"].createElement(_material.Fade, {
-    "in": true,
-    timeout: {
-      enter: timeout
-    }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: "flex",
-      alignItems: "center"
-    }
-  }, component));
+  return component;
 };
 Default.propTypes = {
   textIcon: _propTypes["default"].string.isRequired,
   className: _propTypes["default"].string,
-  withOutAnimate: _propTypes["default"].bool,
   timeout: _propTypes["default"].number,
   enterDelay: _propTypes["default"].number,
   color: _propTypes["default"].string,

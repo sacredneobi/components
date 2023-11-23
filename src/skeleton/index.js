@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Skeleton } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
 const Default = (props) => {
   const { width, widthFull, loading, ...other } = props;

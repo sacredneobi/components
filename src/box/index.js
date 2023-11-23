@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 
 const Default = (props) => {
   const {
@@ -20,17 +20,9 @@ const Default = (props) => {
     heightVH,
     widthFull,
     justifyContent,
-    mT,
-    mB,
-    mL,
-    mR,
-    m,
-    p,
-    pT,
-    pB,
-    pL,
-    pR,
     loading,
+    ai,
+    jc,
     ...other
   } = props;
 
@@ -39,44 +31,14 @@ const Default = (props) => {
   if (defFlex) {
     (sx ? sx : sxFlex).display = "flex";
     (sx ? sx : sxFlex).flexDirection = "column";
-    (sx ? sx : sxFlex).flexWrap = "nowrap";
+    if (!(sx ? sx : sxFlex).flexWrap) {
+      (sx ? sx : sxFlex).flexWrap = "nowrap";
+    }
   }
 
   if (center) {
     (sx ? sx : sxFlex).justifyContent = "center";
     (sx ? sx : sxFlex).alignItems = "center";
-  }
-
-  if (mT) {
-    (sx ? sx : sxFlex).marginTop = parseFloat(mT);
-  }
-  if (mR) {
-    (sx ? sx : sxFlex).marginRight = parseFloat(mR);
-  }
-  if (mL) {
-    (sx ? sx : sxFlex).marginLeft = parseFloat(mL);
-  }
-  if (mB) {
-    (sx ? sx : sxFlex).marginBottom = parseFloat(mB);
-  }
-  if (pT) {
-    (sx ? sx : sxFlex).paddingTop = parseFloat(pT);
-  }
-  if (pR) {
-    (sx ? sx : sxFlex).paddingRight = parseFloat(pR);
-  }
-  if (pL) {
-    (sx ? sx : sxFlex).paddingLeft = parseFloat(pL);
-  }
-  if (pB) {
-    (sx ? sx : sxFlex).paddingBottom = parseFloat(pB);
-  }
-
-  if (p) {
-    (sx ? sx : sxFlex).padding = parseFloat(p);
-  }
-  if (m) {
-    (sx ? sx : sxFlex).margin = parseFloat(m);
   }
 
   if (heightFull) {
@@ -108,13 +70,22 @@ const Default = (props) => {
   if (gap) {
     (sx ? sx : sxFlex).gap = typeof gap === "boolean" ? 1 : parseFloat(gap);
   }
-  if (alignItems) {
-    (sx ? sx : sxFlex).alignItems =
-      typeof alignItems === "boolean" ? "center" : alignItems;
+  if (alignItems || ai) {
+    if (alignItems) {
+      (sx ? sx : sxFlex).alignItems =
+        typeof alignItems === "boolean" ? "center" : alignItems;
+    } else {
+      (sx ? sx : sxFlex).alignItems = typeof ai === "boolean" ? "center" : ai;
+    }
   }
-  if (justifyContent) {
-    (sx ? sx : sxFlex).justifyContent =
-      typeof justifyContent === "boolean" ? "center" : justifyContent;
+  if (justifyContent || jc) {
+    if (justifyContent) {
+      (sx ? sx : sxFlex).justifyContent =
+        typeof justifyContent === "boolean" ? "center" : justifyContent;
+    } else {
+      (sx ? sx : sxFlex).justifyContent =
+        typeof jc === "boolean" ? "center" : jc;
+    }
   }
   if (nowrap) {
     (sx ? sx : sxFlex).flexWrap = "nowrap";
@@ -131,6 +102,7 @@ Default.propTypes = {
   grow: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   nowrap: PropTypes.bool,
   alignItems: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  ai: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   name: PropTypes.string,
   center: PropTypes.bool,
   overflow: PropTypes.bool,
@@ -143,16 +115,7 @@ Default.propTypes = {
   heightVH: PropTypes.bool,
   widthFull: PropTypes.bool,
   justifyContent: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  mT: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  mB: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  mL: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  mR: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  m: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  p: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  pT: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  pB: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  pL: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  pR: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  jc: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   loading: PropTypes.bool,
 };
 

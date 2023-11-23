@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import Icon from "../icon";
 import Text from "../text";
 import Box from "../box";
@@ -120,20 +119,7 @@ const MyButton = (props) => {
   );
 };
 
-const MyButtonNavigate = (props) => {
-  const navigate = useNavigate();
-
-  const handleOnNavigation = (event) => {
-    navigate(props.navigation);
-    event.stopPropagation();
-  };
-  return <MyButton {...props} onNavigate={handleOnNavigation} />;
-};
-
 const Default = (props) => {
-  if (props.navigation) {
-    return <MyButtonNavigate {...props} />;
-  }
   return <MyButton {...props} />;
 };
 

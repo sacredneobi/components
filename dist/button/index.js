@@ -5,9 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-var _material = require("@mui/material");
+var _Button = _interopRequireDefault(require("@mui/material/Button"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _reactRouterDom = require("react-router-dom");
 var _icon = _interopRequireDefault(require("../icon"));
 var _text = _interopRequireDefault(require("../text"));
 var _box = _interopRequireDefault(require("../box"));
@@ -60,7 +59,7 @@ var MyButton = function MyButton(props) {
       fontSize: "0.8rem"
     }, sxText)
   }) : null;
-  var component = /*#__PURE__*/_react["default"].createElement(_material.Button, _extends({
+  var component = /*#__PURE__*/_react["default"].createElement(_Button["default"], _extends({
     size: sizeButton,
     disabled: loading
   }, other, {
@@ -102,20 +101,7 @@ var MyButton = function MyButton(props) {
     leaveDelay: leaveDelay
   }, component);
 };
-var MyButtonNavigate = function MyButtonNavigate(props) {
-  var navigate = (0, _reactRouterDom.useNavigate)();
-  var handleOnNavigation = function handleOnNavigation(event) {
-    navigate(props.navigation);
-    event.stopPropagation();
-  };
-  return /*#__PURE__*/_react["default"].createElement(MyButton, _extends({}, props, {
-    onNavigate: handleOnNavigation
-  }));
-};
 var Default = function Default(props) {
-  if (props.navigation) {
-    return /*#__PURE__*/_react["default"].createElement(MyButtonNavigate, props);
-  }
   return /*#__PURE__*/_react["default"].createElement(MyButton, props);
 };
 Default.propTypes = {

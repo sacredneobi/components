@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _material = require("@mui/material");
+var _Divider = _interopRequireDefault(require("@mui/material/Divider"));
 var _box = _interopRequireDefault(require("../box"));
 var _excluded = ["sxBox", "fix", "loading"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -20,9 +20,9 @@ var Default = function Default(props) {
   if (fix) {
     return /*#__PURE__*/_react["default"].createElement(_box["default"], {
       sx: sxBox
-    }, /*#__PURE__*/_react["default"].createElement(_material.Divider, other));
+    }, /*#__PURE__*/_react["default"].createElement(_Divider["default"], other));
   }
-  return /*#__PURE__*/_react["default"].createElement(_material.Divider, other);
+  return /*#__PURE__*/_react["default"].createElement(_Divider["default"], other);
 };
 Default.propTypes = {
   fix: _propTypes["default"].bool,
